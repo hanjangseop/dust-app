@@ -2,33 +2,33 @@ google.charts.load('current', {packages: ['corechart', 'bar']});
 google.charts.setOnLoadCallback(realdata);
 
 function realdata() {
-  $.get("http://dust.toycode.org/all", function(data) {
+  $.get("http://dust.toycode.org/avg", function(data) {
     drawBasic(data);
   });
 }
 
 function drawBasic(result) {
       var data = new google.visualization.DataTable();
-      data.addColumn('timeofday', 'X');
+      data.addColumn('date', 'X');
       data.addColumn('number', 'Dust Density');
       data.addColumn({type: 'string', role: 'tooltip'});
       data.addRows(
         result.map(function(obj, index) {
-          var time = obj.date - obj.date % 10000,
-              value = parseInt(obj.dustvalue*100+0.5,10),
+          var time = obj[0]._id - obj[0]._id % 10000,
+              value = parseInt(obj[0].dustvalue*100+0.5,10),
               tooltip;
           tooltip = "측정시간: " + moment(time).format('h a', 'kr') + "\n먼지측정값 : " + value;
-          return [{
-            v:[+moment(time).format('h', 'kr'), 0, 0],
-            f: moment(time).format('h a', 'kr')
-          }, value, tooltip];
+          return [new Date(time), value, tooltip];
         })
       );
 
       var options = {
         hAxis: {
          title: 'Time of Day',
-         format: 'h a'
+         format: 'dd일 h a',
+         gridlines: {
+           count: -1
+         },
        },
         vAxis: {
           title: 'Dust Density'
