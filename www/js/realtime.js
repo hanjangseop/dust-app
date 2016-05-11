@@ -23,7 +23,7 @@ function drawBasic(result) {
       var time = obj.date - obj.date % 10000,
           value = parseInt(obj.dustvalue*100+0.5,10),
           tooltip;
-      tooltip = "측정시간: " + moment(time).format('h시mm분ss초', 'kr') + "\n먼지측정값 : " + value +"µg/m³";
+      tooltip = "측정시간: " + moment(time).format('h시mm분ss초', 'kr') + "\n먼지측정값 : " + value + "(micro)g/m³";
       return [new Date(time), value, tooltip];
     })
   );
