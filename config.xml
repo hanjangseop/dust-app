@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.cordova.hellocordova" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>HelloCordova</name>
+<widget id="org.toycode.dust" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>NE2 DustSensor</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        NE2 DustSensor
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="toycodeinc@gmail.com">
+        toycode Inc.
     </author>
     <content src="index.html" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
@@ -16,7 +16,9 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <icon src="res/icon.png" />
     <platform name="android">
+        <preference name="android-minSdkVersion" value="14" />
         <preference name="loadUrlTimeoutValue" value="700000" />
         <allow-intent href="market:*" />
     </platform>
@@ -24,4 +26,8 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
+    <preference name="xwalkVersion" value="xwalk_core_library_beta:18+" />
+    <preference name="xwalkCommandLine" value="--disable-pull-to-refresh-effect" />
+    <preference name="xwalkMode" value="embedded" />
+    <preference name="xwalkMultipleApk" value="true" />
 </widget>
